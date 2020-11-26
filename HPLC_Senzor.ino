@@ -1,4 +1,3 @@
-
 int ledGas = 13;
 int ledVoda = 12;
 
@@ -18,57 +17,52 @@ void setup() {
   Serial.begin(9600);
 }
 
-
 void loop() {
 
-
-
-//if((A0) == 
-
-
-  if (digitalRead(A0) == LOW)  {
-    Serial.println("Mokro");
-    digitalWrite(ledVoda, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(100);
-
-  }
-  else  {
-    Serial.println("Suvo");
-    digitalWrite(ledVoda, LOW);
-    delay(100);
-  }
   val_analog = analogRead(aPin0);
   Serial.print("Analog value : ");
   Serial.println(val_analog);
   Serial.println("");
   delay(1000);
 
-
   sensorValue = analogRead(A1);
   Serial.print(sensorValue, DEC);
   Serial.println(" PPM");
-  if (sensorValue > 140) {
-    Serial.println("Gasovi prisutni");
+
+  if (val_analog < 1000 && sensorValue > 140) {
+    digitalWrite(ledVoda, HIGH);
+    delay(100);
+    digitalWrite(ledVoda, LOW);
+    delay(100);
     digitalWrite(ledGas, HIGH);
     delay(100);
-  }
-  else {
-    Serial.println("Gasovi odsutni");
     digitalWrite(ledGas, LOW);
     delay(100);
   }
-  delay(100);
 
+  else {
+    if (digitalRead(A0) == LOW)  {
+      Serial.println("Mokro");
+      digitalWrite(ledVoda, HIGH);
+      delay(100);
 
+    }
+    else  {
+      Serial.println("Suvo");
+      digitalWrite(ledVoda, LOW);
+      delay(100);
+    }
 
-
-
-  //  digitalWrite(ledGas, HIGH);   // turn the LED on (HIGH is the voltage level)
-  //  delay(100);                       // wait for a second
-  //  digitalWrite(ledGas, LOW);    // turn the LED off by making the voltage LOW
-  //  delay(100);
-  //  digitalWrite(ledVoda, HIGH);   // turn the LED on (HIGH is the voltage level)
-  //  delay(100);
-  //  digitalWrite(ledVoda, LOW);   // turn the LED on (HIGH is the voltage level)
-  //  delay(100);   // wait for a second
+    if (sensorValue > 140) {
+      Serial.println("Gasovi prisutni");
+      digitalWrite(ledGas, HIGH);
+      delay(100);
+    }
+    else {
+      Serial.println("Gasovi odsutni");
+      digitalWrite(ledGas, LOW);
+      delay(100);
+    }
+    delay(100);
+  }
 }
