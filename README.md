@@ -1,10 +1,10 @@
-# HPLC_Senzor
+# Senzor vode i dima
 
-Kod za senzor vode i gasova koji ce biti ugrađen u HPLC (High Pressure Liquid Chromatography) uređaj koji se nalazi na Hemijskom fakultetu, Univerzitet u Beogradu.
-Ako HPLC izbaci vodu, aktiviraće se jedna dioda.
-Ako HPLC proizvede neželjeni dim ili gas, aktiviraće se druga dioda.
-Ukoliko senzori registruju i vodu i gas, naizmenično se uključuju i isključuju obe diode.
-U planu je dodavanje buzzer-a radi zvučnog obaveštavanja korisnika da nešto nije u redu.
+Senzor vode i dima za Muzej hemije koji se nalazi na Hemisjkom fakultetu, Univerzitet u Beogradu.  
+Detekcija vode aktivira jednu diodu i buzzer.  
+Detekcija neželjenog dima ili gasa, aktivira drugu diodu.  
+Ukoliko senzori registruju i vodu i gas, aktivira se blink dioda i buzzer.  
+
 
 
 ## Komponente
@@ -13,25 +13,31 @@ U planu je dodavanje buzzer-a radi zvučnog obaveštavanja korisnika da nešto n
 2. MQ135 Gas Sensor
 3. Rain Sensor Module
 4. Dve diode različitih boja
+5. Dva otpornika 120 Ohm
+6. Aktivni buzzer
 
 ## Povezivanje
 
-Arduino - MQ135 
-5V - VCC
-GND - GND
-A1 - AO (Analog Out)
-
-Arduino - Rain Sensor Module
-5V - VCC
-GND - GND
-A0 - AO (Analog Out)
-4 - DO (Digital Out)
-
-Arduino - LED
-13 - 120 Ohm Resistor - Anode (+)
-GND - Cathode (-)
-12 - 120 Ohm Resistor - Anode (-)
-GND - Cathode (-)
+Arduino - MQ135  
+5V - VCC  
+GND - GND  
+A1 - AO (Analog Out)  
+  
+Arduino - Rain Sensor Module  
+5V - VCC  
+GND - GND  
+A0 - AO (Analog Out)  
+Pin 4 - DO (Digital Out)  
+  
+Arduino - LED  
+Pin 9 - 120 Ohm Resistor - Anode (+)  
+GND - Cathode (-)  
+Pin 8 - 120 Ohm Resistor - Anode (-)  
+GND - Cathode (-)  
+  
+Arduino - Buzzer  
+Pin 7 - Anode (+)  
+GND - Cathode (-) 
 
 ## Disclaimer
 
